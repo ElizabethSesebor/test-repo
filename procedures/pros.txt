@@ -9,9 +9,11 @@
 import yfinance as yf 
 import seaborn as sns
 import pandas as pd 
-import requests as r 
+import requests as r       #request library is used to extract anything from the web or server#  
 
-TO EXTRACT DATA FROM WEBSITE USING BEAUTIFULSOUP
+
+
+#TO EXTRACT DATA FROM WEBSITE USING BEAUTIFULSOUP
 
 after installing and importing necessary libraries,
 url= 'https.........'
@@ -24,6 +26,80 @@ print(RHP)
     type(data)
     content= RHP[0]
     content.head()
-    content.columns
+    content.columns= ["Date", "Open"]
     content.dtypes
+
+    #To Turn the HTML Table into Pandas DataFrame#
+content_data= pd.DataFrame(columns =["Age", "Sex", "School"])
+for row in soup.find("tbody").find_all('tr'):
+col= row.find_all("td")
+Age= col[0].text
+Sex= col[1].text
+School= col[2].text
+content_data= content_data.append({"AGE": Age, "SEX": Sex, "SCHOOL": School}, ignore_index= True)
+
+
+
+
+#USING PANDAS TO READ AN EXISTING FILE
+
+after installing and importing necessary libraries
+csv_path= 'File1.csv'
+df= pd.read_csv(csv_path)
+df.head()
+
+#To Add Columns#
+
+df.Columns= ['Name', 'PhoneNumber', 'Address']
+
+xslx_path= 'File1.xslx'
+df= pd.read_excel(xslx_path)
+df.head()
+
+
+
+
+#TO CREATE A DATAFRAME FROM A COLUMN IN A TABLE
+
+X= the_table_variable[['Names']]  #to bring out only its value#  ~  the_table_variable['Names'].unique() 
+Y= the_table_variable[['Date_of_birth', 'State_of_origin', 'Local_Govt_Area']]
+
+#To pick out a particular datas/values from the dataframe#
+
+the_table_variable= ['Names']> = 1980
+
+#To save the df as another table#
+
+the_table_variable.to_csv('1980_Names.csv')
+
+
+
+
+#TO PUT A FRESH DATA INTO PANDAS LIBRARY
+
+import pandas as pd
+Dict= {'Names': ['Shade', 'Tola', 'Bimbo'], 'Room_number': [101,102,103], 'Hostels': ['Moremi', 'IOA', 'BF']}
+df= pd.DataFrame(Dict)
+df.head()
+df.mean()
+df.tail()
+
+
+
+#REQUEST LIBRARY
+
+import requests
+
+#Get Request#          used to get data from the server
+
+url= 'https://www.ibm.com'
+r=requests.get(url)
+r.request.body
+r.status_code
+r.text
+r.headers ['content-type']
+
+#Post Request#        used to send data to the server
+
+url_post= "http://httpbin.org/post"
 
