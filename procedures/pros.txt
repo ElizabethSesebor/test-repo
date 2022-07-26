@@ -28,6 +28,7 @@ print(RHP)
     content.head()
     content.columns= ["Date", "Open"]
     content.dtypes
+    content.describe()
 
     #To Turn the HTML Table into Pandas DataFrame#
 content_data= pd.DataFrame(columns =["Age", "Sex", "School"])
@@ -37,6 +38,8 @@ Age= col[0].text
 Sex= col[1].text
 School= col[2].text
 content_data= content_data.append({"AGE": Age, "SEX": Sex, "SCHOOL": School}, ignore_index= True)
+                                                or
+DF= pd.DataFrame(np.array(RHP), columns= ["Age", "Sex", "School"], )
 
 
 
@@ -102,4 +105,20 @@ r.headers ['content-type']
 #Post Request#        used to send data to the server
 
 url_post= "http://httpbin.org/post"
+
+
+
+#TO GET PARTICULAR SECTIONS IN AN HTML FILE#
+
+AFTER # soup= BeautifulSoup(data, 'html.parser')
+RHP= pd.read_html(data) #
+
+tags= soup.find('h5') or soup.find_all('h5')
+ # for entails in tags:
+print(entails.text) #    ~ this is to get the texts in h5
+course_cards= soup.find_all('div', class= car)
+for course in course_cards:
+print(course).h5)
+
+
 
