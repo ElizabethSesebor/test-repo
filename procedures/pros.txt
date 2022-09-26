@@ -54,10 +54,12 @@ df.head()
 #To Add Columns#
 
 df.Columns= ['Name', 'PhoneNumber', 'Address']
+sep=r"\+s\"  ~ #To seperate columns with space in a file extracted from intenret#
 
 xslx_path= 'File1.xslx'
 df= pd.read_excel(xslx_path)
 df.head()
+pd.read_excel(xslx_path, header= ["Names", "Age"], index_col= 0, usecolS= "A:F")
 
 
 
@@ -105,6 +107,9 @@ r.headers ['content-type']
 #Post Request#        used to send data to the server
 
 url_post= "http://httpbin.org/post"
+
+pd.__version__     ~ #to check the version of the pandas library you are using#
+
 
 
 
